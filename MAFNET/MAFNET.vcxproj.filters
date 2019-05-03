@@ -14,13 +14,16 @@
     <ClInclude Include="NetAddress.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="NetPacket.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="BaseSocket.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BaseTransportLayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BasePacket.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseSerializer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

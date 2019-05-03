@@ -19,9 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BaseSerializer.h" />
     <ClInclude Include="NetAddress.h" />
     <ClInclude Include="BaseTransportLayer.h" />
-    <ClInclude Include="NetPacket.h" />
+    <ClInclude Include="BasePacket.h" />
     <ClInclude Include="BaseSocket.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
