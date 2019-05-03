@@ -34,11 +34,14 @@ namespace MAFNET {
 		uint64_t bitsIntoCurrentData;
 		uint64_t numBitsWritten;
 	public:
-		BitPacker(uint64_t* dataArray, const uint64_t dataArraySize) : dataArray(dataArray), bitsIntoCurrentData(0), posInArray(0), dataArraySize(dataArraySize), numBitsWritten(0) {
-			memset(dataArray, 0, dataArraySize * sizeof(uint64_t));
+		BitPacker(uint64_t* dataArray, const uint64_t dataArraySize) : dataArray(dataArray), bitsIntoCurrentData(0), posInArray(0), dataArraySize(dataArraySize), numBitsWritten(0) {}
+
+		void setPackerPosition(uint64_t posInArray, uint64_t bitsIntoDWORD) {
+			this->bitsIntoCurrentData = bitsIntoDWORD;
+			this->posInArray = posInArray;
 		}
 
-		bool serializeUint64(uint64_t& value, const uint64_t min = 0, const uint64_t max = UINT64_MAX) {
+		bool serializeUint64(const uint64_t value, const uint64_t min = 0, const uint64_t max = UINT64_MAX) {
 			if (value < min || value > max)
 				return false;
 
@@ -80,6 +83,11 @@ namespace MAFNET {
 		uint64_t numBitsRead;
 	public:
 		BitUnpacker(uint64_t* dataArray, const uint64_t dataArraySize) : dataArray(dataArray), bitsIntoCurrentData(0), posInArray(0), dataArraySize(dataArraySize), numBitsRead(0) {}
+
+		void setPackerPosition(uint64_t posInArray, uint64_t bitsIntoDWORD) {
+			this->bitsIntoCurrentData = bitsIntoDWORD;
+			this->posInArray = posInArray;
+		}
 
 		bool serializeUint64(uint64_t& value, const uint64_t min = 0, const uint64_t max = UINT64_MAX) {
 			const uint64_t range = max;
