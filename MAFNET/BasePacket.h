@@ -20,8 +20,10 @@ namespace MAFNET {
 		};
 
 		BasePacket(BasePacket::ID id, uint64_t hash64, NetAddress remoteAddress);
-		const uint32_t getHash64() const;
+
+		const uint64_t getHash64() const;
 		const BasePacket::ID getPacketID() const;
+
 		NetAddress getRemoteAddress() const;
 	};
 }

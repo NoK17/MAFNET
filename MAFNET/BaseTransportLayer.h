@@ -3,6 +3,7 @@
 #include <WinSock2.h> //This will change in the future to make the API cross-compatible.
 #include <vector>
 #include <string>
+#include "xxhash.h"
 #include "BaseSocket.h"
 #include "BasePacket.h"
 #include "BaseSerializer.h"

@@ -52,7 +52,7 @@ namespace MAFNET {
 			return false;
 
 		socket.getTransmissionBuffer().get()[0] = 0;
-		uint64_t hash64 = 0; //TODO: gen hash for the entire transmit buffer right here, and serialize it into the start of the packet.
+		uint64_t hash64 = XXH64(socket.getTransmissionBuffer().get(), TRANSPORT_RAW_BUFFER_BYTESZ, 42); //TODO: gen hash for the entire transmit buffer right here, and serialize it into the start of the packet.
 		socket.getTransmissionBuffer().get()[0] = hash64; //We do it this way because it is faster..
 
 		if (sendto(socket.socket, (char*)socket.getTransmissionBuffer().get(), TRANSPORT_RAW_BUFFER_BYTESZ, 0, (sockaddr*)&remoteAddr, sizeof(sockaddr_in)) != TRANSPORT_RAW_BUFFER_BYTESZ) {
@@ -82,15 +82,16 @@ namespace MAFNET {
 
 			socket.getTransmissionBuffer().get()[0] = 0;
 
-			//TODO: What has to happen here is that we hash the entire transmit buffer, then compare the hash from the packet to this.
-			uint64_t transmitBufferHash = 0;
+			//Hash the entire transmit buffer, then compare the hash from the packet to this.. if unequal, the packet has been changed.
+			uint64_t transmitBufferHash = XXH64(socket.getTransmissionBuffer().get(), TRANSPORT_RAW_BUFFER_BYTESZ, 42);
 			if (claimedHash != transmitBufferHash) //The packet was changed from the original.
 				return true;
 
-			packer.setPackerPosition(1, 0); //set the packer to its position in the transmit buffer, and serialize the 2 bit id value.
+			packer.setPackerPosition(1, 0); //set the packer to its position in the transmit buffer, and serialize the 2 bit id value :))
 			if (!packer.serializeUint64(packetID, 0, 3))
 				return true;
 
+			//When the public serializer is to be exposed, the starting position should be 1, calculateBits(0, 3) [2] :))
 			netPacket = BasePacket((BasePacket::ID) packetID, claimedHash, NetAddress(inet_ntoa(remoteAddr.sin_addr), ntohs(remoteAddr.sin_port)));
 		}
 
