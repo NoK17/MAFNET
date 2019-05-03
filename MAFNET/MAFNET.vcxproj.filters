@@ -9,6 +9,12 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
+    <Filter Include="Header Files\xxhash">
+      <UniqueIdentifier>{8799bec2-329c-4c6a-9b34-474dbf9059e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\xxhash">
+      <UniqueIdentifier>{876aaf4e-54e0-4cbc-bca6-85e0500f3d04}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NetAddress.h">
@@ -26,5 +32,28 @@
     <ClInclude Include="BaseSerializer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="xxhash.h">
+      <Filter>Header Files\xxhash</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BaseSerializer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NetAddress.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseTransportLayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BasePacket.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseSocket.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="xxhash.cpp">
+      <Filter>Source Files\xxhash</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

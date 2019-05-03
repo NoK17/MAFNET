@@ -19,18 +19,9 @@ namespace MAFNET {
 			SERVER_STATE = 3
 		};
 
-		BasePacket(BasePacket::ID id, uint64_t hash64, NetAddress remoteAddress) : packetID((uint8_t)id), hash64(hash64), remoteAddress(remoteAddress) {}
-
-		const uint32_t getHash64() const {
-			return hash64;
-		}
-
-		const BasePacket::ID getPacketID() const{
-			return (BasePacket::ID) packetID;
-		}
-
-		NetAddress getRemoteAddress() const {
-			return remoteAddress;
-		}
+		BasePacket(BasePacket::ID id, uint64_t hash64, NetAddress remoteAddress);
+		const uint32_t getHash64() const;
+		const BasePacket::ID getPacketID() const;
+		NetAddress getRemoteAddress() const;
 	};
 }

@@ -24,6 +24,15 @@
     <ClInclude Include="BaseTransportLayer.h" />
     <ClInclude Include="BasePacket.h" />
     <ClInclude Include="BaseSocket.h" />
+    <ClInclude Include="xxhash.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BasePacket.cpp" />
+    <ClCompile Include="BaseSerializer.cpp" />
+    <ClCompile Include="BaseSocket.cpp" />
+    <ClCompile Include="BaseTransportLayer.cpp" />
+    <ClCompile Include="NetAddress.cpp" />
+    <ClCompile Include="xxhash.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
