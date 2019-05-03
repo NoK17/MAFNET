@@ -17,10 +17,10 @@
     <ClInclude Include="NetPacket.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RawSocket.h">
+    <ClInclude Include="BaseSocket.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="NetEngine.h">
+    <ClInclude Include="BaseTransportLayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
