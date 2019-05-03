@@ -1,5 +1,6 @@
 #pragma once
 #include <stdint.h>
+#include "NetAddress.h"
 
 namespace MAFNET {
 	struct NetPacket {
@@ -11,6 +12,8 @@ namespace MAFNET {
 			SERVER_CONNTERMINATION = 1,
 			SERVER_STATE = 2
 		};
+
+		NetAddress remoteAddress; //both recipient and sender.
 		uint8_t packetID; //this is serialized into a 2 bit number when sending.
 	};
 }

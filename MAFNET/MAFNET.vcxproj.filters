@@ -9,17 +9,19 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Header Files\Packet">
-      <UniqueIdentifier>{f0f444e6-78e9-46e4-b769-9c44fd0b31d0}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="NetAddress.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="NetPacket.h">
-      <Filter>Header Files\Packet</Filter>
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RawSocket.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NetEngine.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
