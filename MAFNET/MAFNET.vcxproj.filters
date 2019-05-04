@@ -35,6 +35,12 @@
     <ClInclude Include="xxhash.h">
       <Filter>Header Files\xxhash</Filter>
     </ClInclude>
+    <ClInclude Include="MAFNET.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Debug.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BaseSerializer.cpp">
@@ -54,6 +60,9 @@
     </ClCompile>
     <ClCompile Include="xxhash.cpp">
       <Filter>Source Files\xxhash</Filter>
+    </ClCompile>
+    <ClCompile Include="Debug.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

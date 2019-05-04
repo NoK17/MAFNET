@@ -70,10 +70,13 @@ namespace MAFNET {
 		memset(socket.getTransmissionBuffer().get(), 0, TRANSPORT_RAW_BUFFER_BYTESZ);
 		int bytesReceieved = recvfrom(socket.socket, (char*)socket.getTransmissionBuffer().get(), TRANSPORT_RAW_BUFFER_BYTESZ, 0, (sockaddr*)&remoteAddr, &szRemoteAddr);
 
-		if (bytesReceieved == -1)
+		if (bytesReceieved == -1) {
+			if (WSAGetLastError() == WSAEWOULDBLOCK)
+				return true;
 			return false;
+		}
 
-		netPacket = BasePacket(BasePacket::ID::PACKET_EMPTY, 0, NetAddress());
+		netPacket = BasePacket(BasePacket::ID::PACKET_EMPTY, NetAddress());
 
 		if (bytesReceieved == TRANSPORT_RAW_BUFFER_BYTESZ) {
 			BitUnpacker packer(socket.getTransmissionBuffer().get(), TRANSPORT_RAW_BUFFER_BYTESZ / sizeof(uint64_t));
@@ -87,12 +90,14 @@ namespace MAFNET {
 			if (claimedHash != transmitBufferHash) //The packet was changed from the original.
 				return true;
 
+			Debug::writeMessage(Debug::MessageGravity::ALL, "Hash of message was fine: %" PRId64 " == %" PRId64, claimedHash, transmitBufferHash);
+
 			packer.setPackerPosition(1, 0); //set the packer to its position in the transmit buffer, and serialize the 2 bit id value :))
 			if (!packer.serializeUint64(packetID, 0, 3))
 				return true;
 
 			//When the public serializer is to be exposed, the starting position should be 1, calculateBits(0, 3) [2] :))
-			netPacket = BasePacket((BasePacket::ID) packetID, claimedHash, NetAddress(inet_ntoa(remoteAddr.sin_addr), ntohs(remoteAddr.sin_port)));
+			netPacket = BasePacket((BasePacket::ID) packetID, NetAddress(inet_ntoa(remoteAddr.sin_addr), ntohs(remoteAddr.sin_port)));
 		}
 
 		return true;

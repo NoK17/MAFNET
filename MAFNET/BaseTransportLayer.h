@@ -3,10 +3,12 @@
 #include <WinSock2.h> //This will change in the future to make the API cross-compatible.
 #include <vector>
 #include <string>
+#include <inttypes.h>
 #include "xxhash.h"
 #include "BaseSocket.h"
 #include "BasePacket.h"
 #include "BaseSerializer.h"
+#include "Debug.h"
 
 namespace MAFNET {
 	constexpr uint16_t TRANSPORT_RAW_BUFFER_BYTESZ = 1024;

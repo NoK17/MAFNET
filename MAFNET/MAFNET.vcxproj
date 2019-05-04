@@ -20,6 +20,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseSerializer.h" />
+    <ClInclude Include="Debug.h" />
+    <ClInclude Include="MAFNET.h" />
     <ClInclude Include="NetAddress.h" />
     <ClInclude Include="BaseTransportLayer.h" />
     <ClInclude Include="BasePacket.h" />
@@ -31,6 +33,7 @@
     <ClCompile Include="BaseSerializer.cpp" />
     <ClCompile Include="BaseSocket.cpp" />
     <ClCompile Include="BaseTransportLayer.cpp" />
+    <ClCompile Include="Debug.cpp" />
     <ClCompile Include="NetAddress.cpp" />
     <ClCompile Include="xxhash.cpp" />
   </ItemGroup>

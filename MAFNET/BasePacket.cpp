@@ -1,14 +1,14 @@
 #include "BasePacket.h"
 
 namespace MAFNET {
-	BasePacket::BasePacket(BasePacket::ID id, uint64_t hash64, NetAddress remoteAddress) : packetID((uint8_t)id), hash64(hash64), remoteAddress(remoteAddress) {}
-
-	const uint64_t MAFNET::BasePacket::getHash64() const {
-		return hash64;
-	}
+	BasePacket::BasePacket(BasePacket::ID id, NetAddress remoteAddress) : packetID((uint8_t)id), remoteAddress(remoteAddress) {}
 
 	const BasePacket::ID BasePacket::getPacketID() const {
 		return (BasePacket::ID) packetID;
+	}
+
+	const bool BasePacket::isEmpty() const {
+		return (((BasePacket::ID) packetID) == BasePacket::ID::PACKET_EMPTY);
 	}
 
 	NetAddress BasePacket::getRemoteAddress() const {

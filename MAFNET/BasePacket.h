@@ -5,7 +5,6 @@
 namespace MAFNET {
 	class BasePacket {
 		NetAddress remoteAddress; //both recipient and sender.
-		uint64_t hash64; //this is the has that ensures that the contents of the packet remain unchanged.
 		uint8_t packetID; //this is serialized into a 2 bit number when sending.
 		//Together these are 34 bits in, important since that is where the serializer will start reading and writing in the serializer.. on the 35th bit.
 	public:
@@ -19,10 +18,11 @@ namespace MAFNET {
 			SERVER_STATE = 3
 		};
 
-		BasePacket(BasePacket::ID id, uint64_t hash64, NetAddress remoteAddress);
+		BasePacket(BasePacket::ID id = BasePacket::ID::PACKET_EMPTY, NetAddress remoteAddress = NetAddress());
 
-		const uint64_t getHash64() const;
 		const BasePacket::ID getPacketID() const;
+
+		const bool isEmpty() const;
 
 		NetAddress getRemoteAddress() const;
 	};
